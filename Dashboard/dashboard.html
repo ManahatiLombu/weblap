@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #E9F0F6;
+        }
+
+        #navbar-utama {
+            width: 200px;
+            height: 100vh;
+            background-color:#1F578A;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        
+
+        #content{
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        .menu-item {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-1 {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #4FC0E8;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            margin-left: 10px;
+            padding: 0px;            
+        }
+
+        .menu-2 {
+        padding: 0px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: 1px solid #555;
+        border-color: #B7B2B2;
+        align-items: center;
+        border-radius: 5px; 
+        margin-left: 20px;
+        margin-top: 4px;
+        font-size: 10px;
+        }
+
+        .name-container {
+            font-family: magistral, 'Franklin Gothic Medium';
+            font-weight: medium;
+            color: white;
+            text-align: center;
+            font-size: 13px;
+            margin-top: -80px;
+            margin-left: 50px;
+            margin-bottom: 20px;
+        }
+
+        .menu-item:hover {
+            background-color: #555;
+        }
+
+        .menu-item i {
+            margin-right: 8px;
+        }
+
+        .submenu {
+            padding-left: 20px;
+        }
+
+        #search {
+            position: fixed;
+            top: 0px;
+            right: 0;
+            left: 200px;
+            display: flex;
+            align-items: center;
+            background-color: #468fb9; 
+            padding: 7px; 
+            border-radius: 10 10 10px 10px; 
+        }
+
+        #search input {
+            padding: 4px;
+            padding-left: 30px;
+            background: url('aset/search.png') no-repeat 5px center;
+            background-size: 20px 20px; 
+            width: 450px; 
+            border: 1px;
+            border-radius: 5px;
+            margin-right: 8px;
+            box-shadow: 0 2px 5px rgba(219, 35, 35, 0.1);
+            background-color: #f8f8f8;
+            color: #7bb5cc;
+            position: relative;
+        }
+
+
+        #search input::before {
+            content: '\f002';
+            font-family: 'Font Awesome 5 Free';
+            font-size: 16px;
+            color: #555;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #submenuLaporan {
+            display: none;
+         }
+
+        .profil-icon {
+            background-size: contain;
+            width: 17px;
+            height: 17px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .laporan-icon {
+            background-size: contain;
+            width: 15px;
+            height: 13px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .laporan_barang-icon {
+            background-size: contain;
+            width: 17px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
+            }
+        .dashboard-icon {
+            background-size: contain;
+            width: 16px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .dashboard2-icon {
+            background-size: contain;
+            width: 14px;
+            height: 13px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .buat_laporan-icon {
+            background-size: contain;
+            width: 15px;
+            height: 13px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .riwayat_laporan-icon {
+            background-size: contain;
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .edit-icon {
+            background-size: contain;
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        
+    #profileIconContainer {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+
+    #profileIconContainer img {
+        width: 35px;
+        height: 35px;
+        border-radius: 5%;
+        margin-right: 5px; 
+    }
+    </style>
+</head>
+<body>
+    <div id="navbar-utama">
+        <img src="aset/logo.png" alt="Logo" style="width: 35%; max-height: 200px; object-fit: cover; position: relative; top: -30px;">
+        <div style="font-family: magistral, 'Franklin Gothic Medium'; font-weight: medium; color: white; text-align: center; font-size: 13px; margin-top: -90px; margin-left: 50px; margin-bottom: 20px;">
+            CV.RENISA NAWASENA SUTOMO
+        </div>
+        <div class="menu-item" onclick="showContent('Dashboard')">
+            <i class="dashboard-icon" style="background-image: url('aset/dashboard.png');"></i>Dashboard
+        </div>
+        <div class="menu-item" onclick="showContent('Profil')">
+            <i class="profil-icon" style="background-image: url('aset/profil.png');"></i>Profil
+        </div>
+        <div class="menu-item" onclick="showContent('Laporan Barang')">
+            <i class="laporan_barang-icon" style="background-image: url('aset/laporan_barang.png');"></i>Laporan Barang
+        </div>
+        <div class="menu-header" style="padding-left: 15px;">
+            <span style="font-size: 9px;">MENU LAPORAN</span>
+        </div>
+        <div class="menu-item" onclick="toggleSubMenu()" onclick="showContent('Laporan')">
+            <i class="laporan-icon" style="background-image: url('aset/laporan.png');"></i>Laporan
+        </div>
+        <div class="submenu" id="submenuLaporan">
+            <div class="menu-item" onclick="showContent('Buat Laporan')" style="font-size: 10px;">
+                <i class="buat_laporan-icon" style="background-image: url('aset/buat-laporan.png');"></i> Buat Laporan
+            </div>
+            <div class="menu-item" onclick="showContent('RiwayatLaporan')" style="font-size: 10px;">
+                <i class="riwayat_laporan-icon" style="background-image: url('aset/riwayat_laporan.png');"></i> Riwayat Laporan
+            </div>
+        </div>
+
+    </div>
+
+    <div id="content">
+        contentDiv.innerHTML = `
+
+    </div>
+
+    <div id="search">
+        <input type="text" placeholder="Search...">
+        <div id="profileIconContainer">
+            <span>Admin</span>
+            <img src="aset/profil5.png" alt="Gambar Profil">
+        </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            showContent('Dashboard');
+        });
+        function showContent(content) {
+            var contentDiv = document.getElementById('content');
+            switch (content) {
+                case 'Dashboard':
+                    contentDiv.innerHTML = `
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <div style="position: relative; width: 100%; height: 50px; margin-top: 50px;">
+                                <div style="position: absolute; width: 100%; height: 100%; background-color: #F8F8F8; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; display: flex; align-items: center;">
+                                    <div class="menu-1">
+                                        <div class="menu-item" onclick="showContent('Dashboard'); ">
+                                            <i class="dashboard2-icon" style="background-image: url('aset/dashboard2.png');"></i>Dashboard
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                    break;
+                case 'Profil':
+                contentDiv.innerHTML = `
+                <i class="profil-icon" style="background-image: url('aset/profil.png'); width: 20px; height: 20px; position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; margin-top: 30px;">
+                    <div style="display: flex; align-items: center; margin-bottom: -20px;">
+                        <p style="margin-right: 5px; font-weight: bold;">Profil</p>
+                        <span>|</span>
+                        <img src="aset/profil3.png" alt="Ikon Profil" style="width: 20px; height: 20px; border-radius: 50%; margin: 0 5px;">
+                        <span>&gt;</span>
+                        <p style="margin-left: 5px; font-size: 11px;">Profil</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 60px; align-items: center;">
+                    <div style="width: 40%; height: 220px; background-color: #F8F8F8; border-radius: 5px; padding: 20px; box-sizing: border-box; text-align: center; box-shadow: 0px 0px 4px 2px #CCCCCC; position: relative;">
+                        <input type="file" id="profileImageInput" accept="image/*" style="display: none;" onchange="tampilkanGambarProfil(event)">
+                        <label for="profileImageInput" style="cursor: pointer;">
+                            <img id="gambarProfil" src="aset/profil2.png" alt="Gambar Profil" style="width: 90px; height: 90px; border-radius: 30%;">
+                        </label>
+                        <p style="margin-top: 15px;">sparepart</p>
+                        <p style="margin-top: 10px; font-weight: bold;">ADMIN</p>
+                        <i class="edit-icon" style="background-image: url('aset/edit.png'); width: 20px; height: 20px; position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
+                    </div>
+                </div>
+
+                    `;
+                    break;
+                case 'Laporan Barang':
+                contentDiv.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; align-items: center; margin-bottom: -20px; margin-top: 30px; ">
+                        <p style="margin-right: 5px; font-weight: bold;">Laporan Barang</p>
+                        <span>|</span>
+                        <img src="aset/profil3.png" alt="Ikon Profil" style="width: 20px; height: 20px; border-radius: 50%; margin: 0 5px;">
+                        <span>&gt;</span>
+                        <p style="margin-left: 5px; font-size: 11px;">Laporan Barang</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 20px;">
+                    <div style="width: 100%; height: 350px; margin-top: 22px; margin-left: 25px; background-color: #F8F8F8; border-radius: 5px; padding: 20px; box-sizing: border-box; position: relative; text-align: center;">
+                        <p style="text-align: left; margin-left: 5px; font-size: 18px; color: #F2981E;">Laporan Barang</p>
+                    </div>
+                </div>
+                    `;
+                    break;
+                case 'Laporan':
+                    contentDiv.innerHTML = `<h1>${content}</h1><p>This is the ${content} content.</p>`;
+                    break;
+                case 'Buat Laporan':
+                contentDiv.innerHTML = `
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <div style="display: flex; align-items: center; margin-bottom: -20px; margin-top: 30px; ">
+                                <p style="margin-right: 5px; font-weight: bold;">Laporan</p>
+                                <span>|</span>
+                                <img src="aset/profil3.png" alt="Ikon Profil" style="width: 20px; height: 20px; border-radius: 50%; margin: 0 5px;">
+                                <span>&gt;</span>
+                                <p style="margin-left: 5px; font-size: 11px;">Laporan</p>
+                            </div>
+                                <div style="width: 75%; height: 345px; background-color: #F8F8F8; border-radius: 5px; padding: 20px; box-sizing: border-box; margin-top: 20px; left: 87px; border: 2px solid orange; border-left: 1px solid orange; border-right: 1px solid orange; border-top: 1px solid orange; position: relative;">
+                                    <img src="aset/profil4.png" alt="Ikon Profil" style="width: 20px; height: 20px; border-radius: 50%; margin: 0 5px; float: left;">
+                                    <span style="float: left; margin-top: 2px; margin-left: 5px; font-weight: bold;">Laporan</span>
+                                    <div style="width: 100%; height: 285px; background-color: #F8F8F8; border-radius: 5px; padding: 40px; box-sizing: border-box; margin-top: 25px; border: 1.5px solid #ccc; box-shadow: 2px 0px 4px 0px #CCCCCC; position: relative;">
+                            <form style="max-width: 400px; margin: 0 auto;">
+
+                                <div style="display: flex; margin-bottom: 10px; margin-left: -62px; margin-top: -30px;">
+                                <label for="judul" style="width: 30%; font-size: 12px; margin-right: 10px;">Customer Name</label>
+                                <input type="text" id="judul" name="judul" style="flex-grow: 1;">
+                                </div>
+
+                                <div style="display: flex; margin-bottom: 10px; margin-left: -62px;">
+                                <label for="jenis" style="width: 30%; font-size: 12px; margin-right: 10px;">No. PO</label>
+                                <input type="text" id="jenis" name="jenis" style="flex-grow: 1;">
+                                </div>
+
+                                <div style="display: flex; margin-bottom: 10px; margin-left: -62px;">
+                                <label for="lokasi" style="width: 30%; font-size: 12px; margin-right: 10px;">No.DO</label>
+                                <input type="text" id="lokasi" name="lokasi" style="flex-grow: 1;">
+                                </div>
+
+                                <div style="display: flex; margin-bottom: 10px; margin-left: -62px;">
+                                <label for="tanggal" style="width: 30%; font-size: 12px; margin-right: 10px;">Tanggal Laporan</label>
+                                <input type="date" id="tanggal" name="tanggal" style="flex-grow: 1;">
+                                </div>
+
+                                <div style="display: flex; margin-bottom: 10px; margin-left: -62px;">
+                                <label for="lokasi" style="width: 30%; font-size: 12px; margin-right: 10px;">No.INV</label>
+                                <input type="text" id="lokasi" name="lokasi" style="flex-grow: 1;">
+                                </div>
+
+                                <div style="display: flex; margin-bottom: 50px; margin-left: -62px;">
+                                    <label for="isi" style="width: 30%; font-size: 12px; margin-right: 10px;">Deskripsi</label>
+                                    <textarea id="isi" name="isi" style="flex-grow: 1;"></textarea>
+                                </div>
+
+
+                                <div style="display: flex; margin-bottom: 10px; margin-left: -62px; margin-top: -40px;">
+                                    <label for="lokasi" style="width: 30%; font-size: 12px; margin-right: 10px;">File Upload</label>
+                                    <input type="file" id="lokasi" name="lokasi" style="flex-grow: 1; background-color: white; border: 0.2px solid #ccc; padding: 5px; border-color: black; border-radius: 2px;">
+                                </div>
+
+                                <div style="text-align: right; ">
+                                <button type="submit">Simpan</button>
+                                </div>
+                            </form>
+                    </div>
+                </div>                            
+                    `;
+                    break;
+                case 'RiwayatLaporan':
+        contentDiv.innerHTML = `
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <div style="background-color: #eee; padding: 20px; box-sizing: border-box;">
+                                <h2>Box 1</h2>
+                                <p>This is the content of the first box.</p>
+                            </div>
+                            <div style="background-color: #ddd; padding: 20px; box-sizing: border-box; margin-top: 20px;">
+                                <h2>Box 2</h2>
+                                <p>This is the content of the second box.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+        }
+    
+        function search() {
+            alert('Performing search...');
+        }
+    
+        function toggleSubMenu() {
+            var submenuLaporan = document.getElementById('submenuLaporan');
+            submenuLaporan.style.display = submenuLaporan.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function tampilkanGambarProfil(event) {
+        const input = event.target;
+        const gambar = document.getElementById('gambarProfil');
+
+        const file = input.files[0];
+        if (file) {
+            const pembaca = new FileReader();
+            pembaca.onload = function (e) {
+                gambar.src = e.target.result;
+            };
+            pembaca.readAsDataURL(file);
+        }
+    }
+
+    </script>
+</body>
+
+</html>
