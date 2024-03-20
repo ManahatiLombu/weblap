@@ -203,6 +203,28 @@
         border-radius: 5%;
         margin-right: 5px; 
     }
+    
+    .background-slider {
+        width: 100%;
+        height: 460px;
+        border-radius: 5px;
+        border: 0px solid #ccc;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        animation: slideBackground 20s infinite linear;
+    }
+
+    @keyframes slideBackground {
+        0% { background-image: url('aset/1.jpeg'); }
+        20% { background-image: url('aset/2.jpeg'); }
+        40% { background-image: url('aset/3.jpeg'); }
+        60% { background-image: url('aset/4.jpeg'); }
+        80% { background-image: url('aset/5.jpeg'); }
+        100% { background-image: url('aset/1.jpeg'); }
+    }
     </style>
 </head>
 <body>
@@ -258,7 +280,7 @@
         function showContent(content) {
             var contentDiv = document.getElementById('content');
             switch (content) {
-                case 'Dashboard':
+                case 'Dashboard': 
                     contentDiv.innerHTML = `
                         <div style="display: flex; flex-direction: column; gap: 20px;">
                             <div style="position: relative; width: 100%; height: 50px; margin-top: 50px;">
@@ -271,6 +293,26 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="background-slider">
+                            <div style="width: 100%; height: 460px; border-radius: 5px; border: 0px solid #ccc; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+                                <div style="background-color : rgba(248, 248, 249, 0.8); width: 50%; height: 330px; border-radius: 5px; border: 0px solid #ccc; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center;">
+                                        <p style="font-weight: bold; font-size: 35px; margin-top: -15px; ">VISSION</p>
+                                        <div style="text-align: justify;">
+                                            <p style="margin: 0;">Menjadi pilihan mitra pertama yang menyediakan Suku Cadang, Alat Pelindung Diri, Tools, dan kebutuhan perusahaan lainnya</p>
+                                        </div>
+                                        <p style="font-weight: bold; font-size: 35px; margin-top: 100px 0;">MISSION</p>
+                                        <div style="text-align: left;">
+                                            <p style="margin: 10px 0;">1. Primary and sustainable commitment to goods and services.</p>
+                                            <p style="margin: 10px 0;">2. Optimizing resources by prioritizing work safety</p>
+                                            <p style="margin: 10px 0;">3. Providing excellent quality of goods and services</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         `;
                     break;
                 case 'Profil':
@@ -278,10 +320,8 @@
                 <i class="profil-icon" style="background-image: url('aset/profil.png'); width: 20px; height: 20px; position: absolute; top: 10px; right: 10px; cursor: pointer;"></i>
                 <div style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; margin-top: 30px;">
                     <div style="display: flex; align-items: center; margin-bottom: -20px;">
-                        <p style="margin-right: 5px; font-weight: bold;">Profil</p>
-                        <span>|</span>
-                        <img src="aset/profil3.png" alt="Ikon Profil" style="width: 20px; height: 20px; border-radius: 50%; margin: 0 5px;">
-                        <span>&gt;</span>
+                        <p style="margin-right: 5px; font-weight: bold;">Dashboard</p>
+                        <span>/</span>
                         <p style="margin-left: 5px; font-size: 11px;">Profil</p>
                     </div>
                 </div>
@@ -303,13 +343,14 @@
                 contentDiv.innerHTML = `
                 <div style="display: flex; flex-direction: column; gap: 20px;">
                     <div style="display: flex; align-items: center; margin-bottom: -20px; margin-top: 30px; ">
-                        <p style="margin-right: 5px; font-weight: bold;">Laporan Barang</p>
-                        <span>|</span>
-                        <img src="aset/profil3.png" alt="Ikon Profil" style="width: 20px; height: 20px; border-radius: 50%; margin: 0 5px;">
-                        <span>&gt;</span>
-                        <p style="margin-left: 5px; font-size: 11px;">Laporan Barang</p>
+                    <p style="margin-right: 5px; font-weight: bold;">Dashboard</p>
+                    <span> / </span>
+                    <p style="margin-left: 5px; font-size: 11px;">Laporan Barang</p>
+                    <span style="margin-left: 5px;">/</span>
+                    <p style="margin-left: 5px; font-size: 11px;"> Buat Laporan</p>
                     </div>
                 </div>
+
                 <div style="display: flex; gap: 20px;">
                     <div style="width: 100%; height: 350px; margin-top: 22px; margin-left: 25px; background-color: #F8F8F8; border-radius: 5px; padding: 20px; box-sizing: border-box; position: relative; text-align: center;">
                         <p style="text-align: left; margin-left: 5px; font-size: 18px; color: #F2981E;">Laporan Barang</p>
@@ -324,10 +365,8 @@
                 contentDiv.innerHTML = `
                         <div style="display: flex; flex-direction: column; gap: 20px;">
                             <div style="display: flex; align-items: center; margin-bottom: -20px; margin-top: 30px; ">
-                                <p style="margin-right: 5px; font-weight: bold;">Laporan</p>
-                                <span>|</span>
-                                <img src="aset/profil3.png" alt="Ikon Profil" style="width: 20px; height: 20px; border-radius: 50%; margin: 0 5px;">
-                                <span>&gt;</span>
+                                <p style="margin-right: 5px; font-weight: bold;">Laporan Barang</p>
+                                <span>/</span>
                                 <p style="margin-left: 5px; font-size: 11px;">Laporan</p>
                             </div>
                                 <div style="width: 75%; height: 345px; background-color: #F8F8F8; border-radius: 5px; padding: 20px; box-sizing: border-box; margin-top: 20px; left: 87px; border: 2px solid orange; border-left: 1px solid orange; border-right: 1px solid orange; border-top: 1px solid orange; position: relative;">
@@ -381,7 +420,7 @@
                     `;
                     break;
                 case 'RiwayatLaporan':
-        contentDiv.innerHTML = `
+                    contentDiv.innerHTML = `
                         <div style="display: flex; flex-direction: column; gap: 20px;">
                             <div style="background-color: #eee; padding: 20px; box-sizing: border-box;">
                                 <h2>Box 1</h2>
